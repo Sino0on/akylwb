@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>WB Feedbacks</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 min-h-screen flex items-center justify-center">
+
+    <div class="w-full max-w-3xl bg-white shadow-lg rounded-xl p-8">
+        <h1 class="text-2xl font-bold text-center text-gray-800 mb-6">Проверка отзывов Wildberries</h1>
+
+        <form method="post" class="flex items-center gap-4 justify-center mb-6">
+            {% csrf_token %}
+            <input
+                type="text"
+                name="product_id"
+                id="product_id"
+                placeholder="Введите ID товара..."
+                value="{{ product_id|default:'' }}"
+                class="flex-1 border rounded-lg px-4 py-2 focus:ring-2 focus:ring-indigo-500 focus:outline-none"
+            >
+            <button
+                type="submit"
+                class="bg-indigo-600 hover:bg-indigo-700 text-white px-6 py-2 rounded-lg shadow">
+                Получить
+            </button>
+        </form>
+
+        {% if product_id %}
+            <div class="text-center mb-6">
+                <a href="{% url 'export_excel' product_id=product_id %}"
+                   class="bg-green-600 hover:bg-green-700 text-white px-6 py-2 rounded-lg shadow">
+                    Скачать Excel
+                </a>
+            </div>
+        {% endif %}
+
+<!--        {% if data %}-->
+<!--            <h2 class="text-xl font-semibold text-gray-700 mb-4">Ответ API:</h2>-->
+<!--            <div class="bg-gray-50 border rounded-lg p-4 max-h-96 overflow-y-auto">-->
+<!--                <pre class="text-sm text-gray-800">{{ data|safe }}</pre>-->
+<!--            </div>-->
+<!--        {% endif %}-->
+    </div>
+
+</body>
+</html>
