@@ -54,9 +54,9 @@ def export_excel(request, product_id: int):
             data = r.json()
         except Exception as e:
             data = {"error": str(e)}
-    product_id = data.get('products', [])[0].get('root', None)
+    product = data.get('products', [])[0].get('root', None)
 
-    url = f"https://feedbacks2.wb.ru/feedbacks/v2/{product_id}"
+    url = f"https://feedbacks2.wb.ru/feedbacks/v2/{product}"
     r = requests.get(url, timeout=15)
     r.raise_for_status()
     feedbacks = r.json().get('feedbacks', [])
