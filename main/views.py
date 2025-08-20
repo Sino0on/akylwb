@@ -48,7 +48,7 @@ def index(request):
 def export_excel(request, product_id: int):
 
 
-    url = f"https://feedbacks2.wb.ru/feedbacks/v2/{product}"
+    url = f"https://feedbacks2.wb.ru/feedbacks/v2/{product_id}"
     r = requests.get(url, timeout=15)
     r.raise_for_status()
     feedbacks = r.json().get('feedbacks', [])
