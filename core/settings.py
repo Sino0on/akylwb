@@ -27,7 +27,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
-CSRF_TRUSTED_ORIGINS = ['https://akylwbpedik.sino0on.ru/', 'https://www.akylwbpedik.sino0on.ru/']
+CSRF_TRUSTED_ORIGINS = ['https://akylwbpedik.sino0on.ru', 'https://www.akylwbpedik.sino0on.ru']
 # Application definition
 
 INSTALLED_APPS = [
