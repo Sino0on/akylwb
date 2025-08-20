@@ -46,15 +46,7 @@ def index(request):
 
 
 def export_excel(request, product_id: int):
-    if product_id:
-        url = f"https://card.wb.ru/cards/v4/detail?appType=1&dest=286&nm={product_id}"
-        try:
-            r = requests.get(url, timeout=10)
-            r.raise_for_status()
-            data = r.json()
-        except Exception as e:
-            data = {"error": str(e)}
-    product = data.get('products', [])[0].get('root', None)
+
 
     url = f"https://feedbacks2.wb.ru/feedbacks/v2/{product}"
     r = requests.get(url, timeout=15)
